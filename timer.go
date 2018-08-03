@@ -11,7 +11,11 @@ func main() {
 	for {
 		select {
 		case <-timer.C:
-			fmt.Println(time.Now())
+			handler()
 		}
-	}	
+	}
+}
+
+func handler() {
+	fmt.Println(time.Now())
 }
