@@ -9,3 +9,8 @@ var (
 	DBDriver string = "mysql"
 )
 
+// 获取数据库引擎
+func GetEngine() (*xorm.Engine, error) {
+	dataSource := ""
+	return xorm.NewEngine(DBDriver, dataSource)
+}
