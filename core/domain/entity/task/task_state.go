@@ -2,7 +2,7 @@ package task
 
 import (
 	"time"
-	"github.com/mickeygo/timergo/domain/entity"
+	"github.com/mickeygo/timergo/core/domain/entity"
 )
 
 // 任务执行的状态
