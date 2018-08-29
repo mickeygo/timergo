@@ -11,6 +11,6 @@ var (
 
 // 获取数据库引擎
 func GetEngine() (*xorm.Engine, error) {
-	dataSource := ""
+	dataSource := "./db/timergo.db"
 	return xorm.NewEngine(DBDriver, dataSource)
 }
