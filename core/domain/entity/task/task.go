@@ -5,7 +5,7 @@ import (
 	"github.com/mickeygo/timergo/core/domain/entity"
 )
 
-// 执行的任务
+// Task 执行的任务
 type Task struct {
 	// 实体 Id
 	Id 			string 		`json:"id"`
@@ -39,10 +39,10 @@ type Task struct {
 	UpdatedDate time.Time 	`json:"updated_date"`
 }
 
-// 新建一个任务
+// NewTask 新建一个任务
 func NewTask(name string, url string, method string, contentType string, params string) *Task {
 	return &Task {
-		Id: entity.NewId(),
+		Id: entity.NewID(),
 		Name: name,
 		Url: url,
 		Method: method,
@@ -55,12 +55,12 @@ func NewTask(name string, url string, method string, contentType string, params 
 	}
 }
 
-// 是否是新任务（任务还未开始执行）
+// IsNew 是否是新任务（任务还未开始执行）
 func IsNew(t *Task) bool {
 	return t.Count == 0
 }
 
-// 启用任务
+// Enable 启用任务
 func (t *Task) Enable() {
 	if (t.IsDisabled) {
 		t.IsDisabled = false
@@ -68,7 +68,7 @@ func (t *Task) Enable() {
 	}
 }
 
-// 禁用任务
+// Disable 禁用任务
 func (t *Task) Disable() {
 	if (!t.IsDisabled) {
 		t.IsDisabled = true
@@ -76,7 +76,7 @@ func (t *Task) Disable() {
 	}
 }
 
-// 删除任务
+// Delete 删除任务
 func (t *Task) Delete() {
 	if (!t.IsDeleted) {
 		t.IsDeleted = true
@@ -84,10 +84,10 @@ func (t *Task) Delete() {
 	}
 }
 
-// 生成新的执行状态
+// NewState 生成新的执行状态
 func (t *Task) NewState(start time.Time, end time.Time, result bool, resultCode string) *TaskState {
 	return &TaskState {
-		Id: entity.NewId(),
+		Id: entity.NewID(),
 		TaskId: t.Id,
 		ExecuteStart: start,
 		ExecuteEnd: end,

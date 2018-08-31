@@ -15,7 +15,7 @@ func (j *Job) Use() {
 
 }
 
-// 启动 job
+// Run 启动 job
 func (j *Job) Run() {
 	fmt.Println("Job Run")
 

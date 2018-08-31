@@ -4,7 +4,7 @@ import (
 	"github.com/satori/go.uuid"
 )
 
-// 生成新的 Id
-func NewId() string {
+// NewID 生成新的 Id
+func NewID() string {
 	return uuid.NewV4().String()
 }

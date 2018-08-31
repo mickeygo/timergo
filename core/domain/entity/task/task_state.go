@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-// 任务执行的状态
+// TaskState 任务执行的状态
 type TaskState struct {
 	Id			string		`json:"id"`
 
