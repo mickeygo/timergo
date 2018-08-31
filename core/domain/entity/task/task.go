@@ -7,7 +7,8 @@ import (
 
 // 执行的任务
 type Task struct {
-	entity.Entity
+	// 实体 Id
+	Id 			string 		`json:"id"`
 
 	// 任务名称
 	Name		string		`json:"name"`
@@ -41,6 +42,7 @@ type Task struct {
 // 新建一个任务
 func NewTask(name string, url string, method string, contentType string, params string) *Task {
 	return &Task {
+		Id: entity.NewId(),
 		Name: name,
 		Url: url,
 		Method: method,
@@ -85,6 +87,7 @@ func (t *Task) Delete() {
 // 生成新的执行状态
 func (t *Task) NewState(start time.Time, end time.Time, result bool, resultCode string) *TaskState {
 	return &TaskState {
+		Id: entity.NewId(),
 		TaskId: t.Id,
 		ExecuteStart: start,
 		ExecuteEnd: end,

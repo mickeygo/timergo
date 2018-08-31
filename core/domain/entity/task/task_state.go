@@ -2,12 +2,11 @@ package task
 
 import (
 	"time"
-	"github.com/mickeygo/timergo/core/domain/entity"
 )
 
 // 任务执行的状态
 type TaskState struct {
-	entity.Entity
+	Id			string		`json:"id"`
 
 	// 任务 Id
 	TaskId		string		`json:"task_id"`
