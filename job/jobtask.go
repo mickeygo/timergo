@@ -1,11 +1,12 @@
 package job
 
 import (
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"time"
-	"fmt"
-	"github.com/mickeygo/timergo/core/domain/entity/task"
+
+	"github.com/mickeygo/timergo/core/domain/entities/task"
 )
 
 // 获取所有待执行的任务
@@ -25,8 +26,8 @@ func handleTask(ch chan *task.Task, index int) {
 		if err != nil {
 			fmt.Println(err)
 		}
-		
-		if resp.StatusCode >= 200 || resp.StatusCode <= 304  {
+
+		if resp.StatusCode >= 200 || resp.StatusCode <= 304 {
 			defer resp.Body.Close()
 			body, err := ioutil.ReadAll(resp.Body)
 			if err == nil {

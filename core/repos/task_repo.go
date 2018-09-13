@@ -1,11 +1,10 @@
 package repos
 
 import (
-	"github.com/mickeygo/timergo/core/domain/entity/task"
+	"github.com/mickeygo/timergo/core/domain/entities/task"
 )
 
-// Task 仓储接口
-type TaskRepository interface {
-	Find(id string) *task.Task
-	FindAll() []*task.Task
+// Find 查找任务
+func Find(id string) *task.Task {
+	return nil
 }

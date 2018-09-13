@@ -4,16 +4,18 @@ import (
 	"testing"
 )
 
-func TestGetEngine(t *testing.T) {
-	engine, err := GetEngine()
-
+// TestGetDB
+func TestGetDB(t *testing.T) {
+	db, err := Open()
 	if err != nil {
 		t.Error(err)
 	} else {
 		t.Log("pass")
 	}
+	
+	defer db.Close()
 
-	if err := engine.Ping(); err != nil {
+	if err := db.Ping(); err != nil {
 		t.Log("ping ok")
 	} else {
 		t.Error("ping error")

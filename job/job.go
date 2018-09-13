@@ -1,16 +1,17 @@
 package job
 
 import (
-	"time"
 	"fmt"
+	"time"
 )
 
-var interval time.Duration = 10 * time.Second // 10 秒轮询间隔
+var interval = 10 * time.Second // 10 秒轮询间隔
 
+// Job 定时器
 type Job struct {
-
 }
 
+// Use 使用配置
 func (j *Job) Use() {
 
 }
@@ -28,7 +29,7 @@ func (j *Job) Run() {
 		t := <-ticker.C
 		tasks := getAllPendingTasks(t)
 		for index, task := range *tasks {
-			Jobchan.C[index % Jobchan.Num] <-task
+			Jobchan.C[index%Jobchan.Num] <- task
 		}
 	}
 }
@@ -36,7 +37,7 @@ func (j *Job) Run() {
 // 确保 job 开始运行的时间为 0 秒时间点
 func ensureRunInZeroSecond() {
 	ticker := time.NewTicker(time.Second)
-	for	{
+	for {
 		t := <-ticker.C
 		if t.Second() == 0 {
 			break
